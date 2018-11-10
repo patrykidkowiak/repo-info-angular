@@ -1,20 +1,53 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="alert alert-danger text-center" role="alert" *ngIf="hasErrors" id="alert">
+  Something went wrong. Check user or repository name and try again.
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<div class="container" id="mainContainer">
+  <div class="row text-center justify-content-center">
+    <div class="col-11 border rounded p-2 bg-secondary text-white">
+      <h1 style="font-size:5vw;"><i class="fab fa-github fa-1x"></i>  {{title}}</h1>
+    </div>
+  </div>
+
+  <div class="row align-items-center justify-content-center">
+    <div class="col-11 border rounded p-2 bg-secondary">
+      <form [formGroup]="repositoryForm">
+        <div class="form-row justify-content-center">
+          <div class="col-sm-4 my-1">
+            <div class="form-group">
+              <input type="text" class="form-control" id="gitHubUser" name="gitHubUser" placeholder="github user"
+                     formControlName="gitHubUser"
+                     required>
+            </div>
+          </div>
+          <div class="col-auto my-1">
+            /
+          </div>
+          <div class="col-sm-5 my-1">
+            <input type="text" class="form-control" id="repositoryName" name="repositoryName"
+                   placeholder="repository name"
+                   formControlName="repositoryName"
+                   required>
+          </div>
+          <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary" id="getRepository" [disabled]="!repositoryForm.valid"
+                    (click)="getRepositoryInfo()">Get!
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="repository">
+    <app-repository-details [repository]=repository></app-repository-details>
+  </div>
+
+  <div class="row text-center justify-content-center" style="bottom: 0">
+    <div class="col-11 border rounded p-2 bg-secondary text-white">
+      Patryk Idkowiak 2018
+    </div>
+  </div>
+
+
+</div>
