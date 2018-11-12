@@ -1,6 +1,6 @@
 # RepoInfoAngular
 
-This is a frontend part of [repo-info](https://github.com/patrykidkowiak/repo-info) project.
+This is the frontend part of [repo-info](https://github.com/patrykidkowiak/repo-info) project.
 
 Generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
